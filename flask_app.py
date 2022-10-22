@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
 output_anchor = '<!-- output anchor -->'
@@ -18,12 +18,12 @@ my_form_text = '''<form method="POST">
 '''
 
 
-@app.route('/')
+@application.route('/')
 def my_form():
     return flask_print('')
 
 
-@app.route('/', methods=['POST'])
+@application.route('/', methods=['POST'])
 def my_form_post():
     global acc_sum
     text = get_flask_input()
@@ -41,3 +41,11 @@ def get_flask_input():
 def flask_print(text):
     global acc_sum
     return my_form_text.replace(output_anchor, text).replace(sum_anchor, f'sum: {acc_sum}')
+
+
+# run the app.
+if __name__ == "__main__":
+    # Setting debug to True enables debug output. This line should be
+    # removed before deploying a production app.
+    application.debug = True
+    application.run()
