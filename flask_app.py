@@ -7,7 +7,7 @@ output_anchor = '<!-- output anchor -->'
 sum_anchor = '<!-- sum anchor -->'
 acc_sum = 0
 
-my_form = '''<form method="POST">
+my_form_text = '''<form method="POST">
     <input name="text">
     <input type="submit">
     <br />
@@ -40,4 +40,4 @@ def get_flask_input():
 
 def flask_print(text):
     global acc_sum
-    return my_form.replace(output_anchor, text).replace(sum_anchor, f'sum: {acc_sum}')
+    return my_form_text.replace(output_anchor, text).replace(sum_anchor, f'sum: {acc_sum}')
