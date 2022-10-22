@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, g
+from flask import Flask, request, render_template, g, init_db
 
 app = Flask(__name__)
 
@@ -6,6 +6,15 @@ app = Flask(__name__)
 output_anchor = '<!-- output anchor -->'
 sum_anchor = '<!-- sum anchor -->'
 g.acc_sum = 0
+
+
+def create_app():
+    app = Flask(__name__)
+
+    with app.app_context():
+        init_db()
+
+    return app
 
 
 @app.route('/')
